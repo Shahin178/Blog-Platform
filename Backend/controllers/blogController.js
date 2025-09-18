@@ -4,6 +4,13 @@ const Post = require("../models/blog");
 exports.createPost = async (req, res) => {
   try {
     const { title, content, tags, image } = req.body;
+    console.log("Creating post with data:", {
+      title,
+      content,
+      tags,
+      image,
+      userId: req.userId,
+    });
 
     const post = await Post.create({
       title,
@@ -107,6 +114,120 @@ exports.bookmarkPost = async (req, res) => {
     }
   } catch (err) {
     console.error("Error bookmarking post:", err);
+    res.status(500).json({ message: "Internal server error" });
+  }
+};
+
+// ✅ Get Blog Detail by ID
+exports.getPostById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    console.log("Fetching post with ID:", id);
+
+    const post = await Post.findById(id)
+      .populate("author", "name profilePicture bio")
+      .populate("comments.user", "name profilePicture");
+
+    if (!post) {
+      return res
+        .status(404)
+        .json({ success: false, message: "Post not found" });
+    }
+
+    res.json({ success: true, post });
+  } catch (err) {
+    console.error("Error fetching post:", err);
+    res.status(500).json({ message: "Internal server error" });
+  }
+};
+
+// ✅ Add Comment
+exports.addComment = async (req, res) => {
+  try {
+    const { id } = req.params; // postId
+    const { text } = req.body;
+
+    const post = await Post.findById(id);
+    if (!post) return res.status(404).json({ message: "Post not found" });
+
+    const newComment = {
+      user: req.userId,
+      text,
+      createdAt: new Date(),
+    };
+
+    post.comments.push(newComment);
+    const ress= await post.save();
+    
+
+    await post.populate("comments.user", "name profilePicture");
+
+    res.json({ success: true, comments: post.comments });
+  } catch (err) {
+    console.error("Error adding comment:", err);
+    res.status(500).json({ message: "Internal server error" });
+  }
+};
+
+// ✅ Delete Comment
+exports.deleteComment = async (req, res) => {
+  try {
+    const { id, commentId } = req.params; // postId + commentId
+
+    const post = await Post.findById(id);
+    if (!post) return res.status(404).json({ message: "Post not found" });
+
+    const comment = post.comments.id(commentId);
+    if (!comment) return res.status(404).json({ message: "Comment not found" });
+
+    // Only comment owner or post author can delete
+    if (
+      comment.user.toString() !== req.userId &&
+      post.author.toString() !== req.userId
+    ) {
+      return res.status(403).json({ message: "Not authorized" });
+    }
+
+    post.comments.pull(commentId);
+    const ress=await post.save();
+    console.log("After deleting comment, post:", ress);
+    
+
+    res.json({ success: true, message: "Comment deleted" });
+  } catch (err) {
+    console.error("Error deleting comment:", err);
+    res.status(500).json({ message: "Internal server error" });
+  }
+};
+
+// ✅ Get all bookmarked blogs of logged-in user
+exports.getBookmarkedPosts = async (req, res) => {
+  console.log("Fetching bookmarked posts for user:", req.userId);
+  
+  try {
+    const posts = await Post.find({ bookmarks: req.userId })
+      .populate("author", "name profilePicture bio")
+      .populate("comments.user", "name profilePicture")
+      .sort({ createdAt: -1 });
+
+    res.json({ success: true, posts });
+  } catch (err) {
+    console.error("Error fetching bookmarked posts:", err);
+    res.status(500).json({ message: "Internal server error" });
+  }
+};
+
+// ✅ Get all blogs of logged-in user (own blogs)
+exports.getMyPosts = async (req, res) => {
+  try {
+    const posts = await Post.find({ author: req.userId })
+      .populate("author", "name profilePicture bio")
+      .populate("comments.user", "name profilePicture")
+      .sort({ createdAt: -1 });
+
+    res.json({ success: true, posts });
+  } catch (err) {
+    console.error("Error fetching my posts:", err);
     res.status(500).json({ message: "Internal server error" });
   }
 };

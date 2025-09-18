@@ -2,8 +2,8 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 
 const userSchema = new mongoose.Schema({
-  name: { type: String, trim: true }, 
-  username: String,
+  name: { type: String, trim: true },
+  // username: String,
   email: { type: String, required: true, unique: true },
   profilePicture: {
     type: String,
@@ -13,11 +13,11 @@ const userSchema = new mongoose.Schema({
   bio: {
     type: String,
     trim: true,
-    maxlength: 300, 
+    maxlength: 300,
   },
-  location: { type: String, trim: true },
+  // location: { type: String, trim: true },
   bookmarks: [{ type: mongoose.Schema.Types.ObjectId, ref: "Post" }],
-
+  dateOfBirth: { type: Date }, 
   password: { type: String, required: true },
   resetToken: String,
   resetTokenExpiry: Date,

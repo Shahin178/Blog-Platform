@@ -4,8 +4,7 @@ const bcrypt = require("bcryptjs");
 const sendEmail = require("../utils/sendEmail");
 
 exports.register = async (req, res) => {
-  const { email, password, username, name, profilePicture, bio, location } =
-    req.body;
+  const { email, password, name, profilePicture, bio, dateOfBirth } = req.body;
   const existing = await User.findOne({ email });
   if (existing)
     return res.status(400).json({ message: "Email already exists" });
@@ -13,11 +12,10 @@ exports.register = async (req, res) => {
   const user = await User.create({
     email,
     password,
-    username,
     name,
     profilePicture,
     bio,
-    location,
+    dateOfBirth,
   });
   const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
     // expiresIn: "1h",
@@ -27,11 +25,10 @@ res.json({
   user: {
     id: user._id,
     email: user.email,
-    username: user.username,
     name: user.name,
     profilePicture: user.profilePicture,
     bio: user.bio,
-    location: user.location,
+    dateOfBirth: user.dateOfBirth,
   },
 });
 };
@@ -50,11 +47,10 @@ res.json({
   user: {
     id: user._id,
     email: user.email,
-    username: user.username,
     name: user.name,
     profilePicture: user.profilePicture,
     bio: user.bio,
-    location: user.location,
+    dateOfBirth: user.dateOfBirth,
   },
 });  
 };
@@ -139,5 +135,14 @@ exports.resetPassword = async (req, res) => {
   user.resetTokenExpiry = undefined;
   await user.save();
 
-  res.json({ message: "Password reset successful" });
-};
+res.json({
+  token,
+  user: {
+    id: user._id,
+    email: user.email,
+    name: user.name,
+    profilePicture: user.profilePicture,
+    bio: user.bio,
+    dateOfBirth: user.dateOfBirth,
+  },
+}); };
