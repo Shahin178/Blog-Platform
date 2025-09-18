@@ -186,11 +186,16 @@ During development, _ChatGPT (GPT-5)_ was leveraged for:
 
 ### 🖼 Screenshots
 
-> Screenshots and video demo → [Coming Soon]
+> Screenshots and video demo → https://www.loom.com/share/818f4f019888452ba99e8193bf7b15c7?sid=15c10b5d-9d95-45bf-beca-d388de3f42bf
 
 ### 🌐 Live Demo
 
-> Live deployment → [Coming Soon]
+> Live deployment frontend → (https://blog-platform-frontend-6.onrender.com/home)
+> Live deploymentbackend  → (https://blog-platform-backend-1-dqa6.onrender.com/)
+
+### 🌐 Postman Documentation
+
+> Live deployment frontend → (https://documenter.getpostman.com/view/28935640/2sB3HrnJ6N)
 
 ---
 
