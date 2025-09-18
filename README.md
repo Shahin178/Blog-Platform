@@ -1,152 +1,223 @@
-📝 Blog Platform – Full Stack Web Application
-A full-stack Blog Publishing Platform where users can create, read, update, and delete (CRUD) blog posts with secure authentication, bookmarking, comments, and profile management. Built with React, Node.js, Express, MongoDB and modern tooling.
+<div align="center">
 
-⚙️ Tech Stack
-Frontend (Web)
-React 19 + Vite
+# 📝 Blog Platform
 
-Redux Toolkit (state management)
+## Full Stack Web Application
 
-React Router DOM v7 (routing)
+![React](https://img.shields.io/badge/React-19-blue?style=for-the-badge&logo=react)
+![Node.js](https://img.shields.io/badge/Node.js-Express-green?style=for-the-badge&logo=node.js)
+![MongoDB](https://img.shields.io/badge/MongoDB-Database-green?style=for-the-badge&logo=mongodb)
+![TailwindCSS](https://img.shields.io/badge/Tailwind-CSS-blue?style=for-the-badge&logo=tailwindcss)
 
-Tailwind CSS (styling)
+</div>
 
-CKEditor (rich text editor)
+A modern full-stack Blog Publishing Platform where users can create, read, update, and delete (CRUD) blog posts with secure authentication, bookmarking, comments, and profile management. Built with cutting-edge technologies and best practices.
 
-Axios (API calls)
+---
 
-Backend
-Node.js + Express
+## ⚙ Tech Stack
 
-MongoDB + Mongoose
+### 🎨 Frontend
 
-JWT Authentication (JSON Web Tokens)
+- _React 19_ + _Vite_ - Modern React with lightning-fast build tooling
+- _Redux Toolkit_ - Predictable state management
+- _React Router DOM v7_ - Declarative routing for React
+- _Tailwind CSS_ - Utility-first CSS framework for rapid UI development
+- _CKEditor_ - Rich text editor for content creation
+- _Axios_ - Promise-based HTTP client
 
-BcryptJS (password hashing)
+### 🛠 Backend
 
-Nodemailer (password reset functionality)
+- _Node.js_ + _Express_ - Fast, unopinionated web framework
+- _MongoDB_ + _Mongoose_ - NoSQL database with elegant object modeling
+- _JWT Authentication_ - Secure token-based authentication
+- _BcryptJS_ - Password hashing for security
+- _Nodemailer_ - Email functionality for password reset
 
-🚀 Features
-🔐 Authentication
-User registration
+---
 
-Login with JWT authentication
+## 🚀 Features
 
-Profile details with picture, bio
+### 🔐 Authentication & Security
 
-Forgot password & reset using OTP
+- ✅ _User Registration_ - Create new accounts with validation
+- ✅ _Secure Login_ - JWT-based authentication system
+- ✅ _Profile Management_ - Personal details with picture and bio
+- ✅ _Password Recovery_ - Forgot password & reset using OTP
 
-📰 Blog Posts
-Create blog (title, content via CKEditor, tags, optional image)
+### 📰 Blog Management
 
-Update/Delete only your own blogs
+- ✅ _Create Blogs_ - Rich text editor with CKEditor, tags, and image uploads
+- ✅ _Edit & Delete_ - Full CRUD operations (own posts only)
+- ✅ _Blog Feed_ - Paginated view with search functionality
+- ✅ _Detailed View_ - Individual blog post pages
 
-View all blogs in feed (with pagination & search support)
+### ⭐ User Experience
 
-View individual blog details
+- ✅ _Bookmarking_ - Save and organize favorite posts
+- ✅ _Personal Library_ - View all bookmarked blogs
+- ✅ _Author Dashboard_ - Manage all your published posts
+- ✅ _Comments System_ - Engage with posts through comments
 
-⭐ User Features
-Bookmark / Unbookmark blog posts
+---
 
-View all bookmarked blogs
+## 📂 Project Structure
 
-View all blogs authored by user
-
-Comment on blog posts (add/delete own comments)
-
-📂 Project Structure
-text
 📦 blog-platform
- ┣ 📂 backend
- ┃ ┣ 📂 controllers
- ┃ ┣ 📂 models
- ┃ ┣ 📂 routes
- ┃ ┣ 📂 middlewares
- ┃ ┣ 📜 index.js
- ┃ ┗ 📜 package.json
- ┣ 📂 frontend
- ┃ ┣ 📂 src
- ┃ ┃ ┣ 📂 components
- ┃ ┃ ┣ 📂 pages
- ┃ ┃ ┣ 📂 redux
- ┃ ┃ ┗ 📜 App.jsx
- ┃ ┣ 📜 package.json
- ┃ ┗ 📜 vite.config.js
- ┗ 📜 README.md
-🛠️ Setup Instructions
-1️⃣ Backend Setup
+├── 📂 backend
+│ ├── 📂 controllers # Route handlers and business logic
+│ ├── 📂 models # Database schemas and models
+│ ├── 📂 routes # API endpoint definitions
+│ ├── 📂 middlewares # Authentication and validation
+│ ├── 📂 utils # Helper functions and utilities
+│ ├── 📜 .env # Environment variables
+│ ├── 📜 db.js # Database connection setup
+│ ├── 📜 index.js # Server entry point
+│ └── 📜 package.json # Backend dependencies
+├── 📂 frontend
+│ ├── 📂 src
+│ │ ├── 📂 components # Reusable UI components
+│ │ ├── 📂 pages # Page-level components
+│ │ ├── 📂 redux # State management
+│ │ ├── 📜 api.jsx # API configuration
+│ │ └── 📜 App.jsx # Main application component
+│ ├── 📜 package.json # Frontend dependencies
+│ └── 📜 vite.config.js # Vite configuration
+└── 📜 README.md # Project documentation
+
+---
+
+## 🛠 Setup Instructions
+
+### 1️⃣ Backend Setup
+
 bash
+
+# Navigate to backend directory
+
 cd backend
+
+# Install dependencies
+
 npm install
+
+# Start development server
+
 npm run dev
-Create a .env file in backend/ with:
 
-text
-PORT=5000
-MONGO_URI=your_mongodb_connection
-JWT_SECRET=your_secret
-EMAIL_USER=your_email
-EMAIL_PASS=your_email_password
-API runs at: http://localhost:5000
+_Environment Configuration:_
 
-2️⃣ Frontend Setup
+Create a .env file in the backend/ directory with the following variables:
+
+env
+MONGO_URI=mongodb+srv://banoshahin89_db_user:uylcHyMk7PzCzpQe@cluster0.by5mtjj.mongodb.net/
+PORT=8080
+JWT_SECRET=shahinnn
+EMAIL_USER=banoshahin981@gmail.com
+EMAIL_PASS=bhpb ggnt lpmm brdc
+
+### 2️⃣ Frontend Setup
+
 bash
+
+# Navigate to frontend directory
+
 cd frontend
+
+# Install dependencies
+
 npm install
+
+# Start development server
+
 npm run dev
-Frontend runs at: http://localhost:5173
 
-🔑 API Endpoints
-Auth Routes (/api/auth)
-Method	Endpoint	Description
-POST	/register	Register new user
-POST	/login	Login user & get JWT
-GET	/getAllUser	Get all users (protected)
-GET	/me	Get logged-in user profile
-POST	/forgot-password	Request OTP for reset
-POST	/verify-otp	Verify OTP
-POST	/reset-password	Reset password
-Blog Routes (/api/blog)
-Method	Endpoint	Description
-POST	/createPost	Create blog post
-GET	/allPost	Get all blog posts
-GET	/post/:id	Get blog by ID
-PUT	/updatePost/:id	Update blog (author only)
-DELETE	/deletePost/:id	Delete blog (author only)
-POST	/bookmarkPost/:id	Bookmark/Unbookmark post
-GET	/bookmarks	Get all bookmarked blogs
-GET	/my-posts	Get all posts by user
-POST	/post/:id/comment	Add comment to post
-DELETE	/post/:id/comment/:commentId	Delete comment
-🤖 AI Tools Usage
-During development, ChatGPT (GPT-5) was used for:
+_Access the application:_
 
-Generating boilerplate code for Express routes & Redux slices.
+- 🌐 Frontend: [http://localhost:5173](http://localhost:5173)
+- 🔧 Backend API: [http://localhost:8080](http://localhost:8080)
 
-Debugging React state for bookmarks & comments.
+---
 
-CKEditor integration with React + Tailwind.
+## 🔑 API Endpoints
 
-Writing reusable utilities & error handling.
+### 🔐 Authentication Routes (/api/auth)
 
-UI component styling (cards, buttons, modals).
+| Method | Endpoint         | Description                      |
+| ------ | ---------------- | -------------------------------- |
+| POST   | /register        | Register new user account        |
+| POST   | /login           | Login user & get JWT token       |
+| GET    | /getAllUser      | Get all users (protected)        |
+| GET    | /me              | Get logged-in user profile       |
+| POST   | /forgot-password | Request OTP for password reset   |
+| POST   | /verify-otp      | Verify OTP code                  |
+| POST   | /reset-password  | Reset password with verified OTP |
 
-📸 Demo
-Screenshots / Video demo → [add link]
+### 📝 Blog Routes (/api/blog)
 
-Live Demo (optional) → [deployment link]
+| Method | Endpoint                     | Description                    |
+| ------ | ---------------------------- | ------------------------------ |
+| POST   | /createPost                  | Create new blog post           |
+| GET    | /allPost                     | Get all blog posts (paginated) |
+| GET    | /post/:id                    | Get specific blog by ID        |
+| PUT    | /updatePost/:id              | Update blog (author only)      |
+| DELETE | /deletePost/:id              | Delete blog (author only)      |
+| POST   | /bookmarkPost/:id            | Bookmark/Unbookmark post       |
+| GET    | /bookmarks                   | Get all bookmarked blogs       |
+| GET    | /my-posts                    | Get all posts by current user  |
+| POST   | /post/:id/comment            | Add comment to blog post       |
+| DELETE | /post/:id/comment/:commentId | Delete comment (author only)   |
 
-🏆 Evaluation Criteria Mapping
-API design & architecture → RESTful routes, modular controllers
+---
 
-AI usage → Documented above, integrated in workflow
+## 🤖 AI Tools Usage
 
-Feature completeness → CRUD, auth, bookmarks, comments, profile
+During development, _ChatGPT (GPT-5)_ was leveraged for:
 
-Code readability → Clean modular structure
+- 🔧 _Code Generation_ - Boilerplate code for Express routes & Redux slices
+- 🐛 _Debugging_ - React state management for bookmarks & comments
+- 🎨 _Integration_ - CKEditor integration with React + Tailwind
+- 🛠 _Utilities_ - Writing reusable utilities & error handling
+- 💅 _Styling_ - UI component styling (cards, buttons, modals)
 
-Bonus features → CKEditor, password reset, pagination, bookmarks
+---
 
-👨‍💻 Author
-Your Name
+## 📸 Demo
+
+### 🖼 Screenshots
+
+> Screenshots and video demo → [Coming Soon]
+
+### 🌐 Live Demo
+
+> Live deployment → [Coming Soon]
+
+---
+
+## 🏆 Evaluation Criteria Mapping
+
+| Criteria                    | Implementation                                  |
+| --------------------------- | ----------------------------------------------- |
+| _API Design & Architecture_ | RESTful routes, modular controllers             |
+| _AI Usage_                  | Documented above, integrated in workflow        |
+| _Feature Completeness_      | CRUD, auth, bookmarks, comments, profile        |
+| _Code Readability_          | Clean modular structure                         |
+| _Bonus Features_            | CKEditor, password reset, pagination, bookmarks |
+
+---
+
+<div align="center">
+
+## 👨‍💻 Author
+
+_Shahin Bano_
 Software Engineering Intern Candidate – Mitt Arv
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/shahin-bano-8966ba201/)
+[![GitHub](https://img.shields.io/badge/GitHub-Follow-black?style=for-the-badge&logo=github)](https://github.com/Shahin178)
+
+---
+
+⭐ _Star this repository if you found it helpful!_
+
+</div>
